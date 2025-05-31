@@ -1,7 +1,7 @@
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Home } from './Pages/Home';
-import { Notfound } from './Pages/Notfound';
+import { NotFound } from './Pages/Notfound';
 import { Toaster } from './components/ui/toaster';
 
 function App() {
@@ -13,7 +13,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route index element={<Home/>} />
-        <Route path='*' element={<Notfound/>} />
+        <Route path='*' element={<NotFound/>} />
 
       </Routes>
     </BrowserRouter>
