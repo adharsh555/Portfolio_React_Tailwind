@@ -9,7 +9,6 @@
   🌙 Dark Mode – Seamless light/dark theme toggle
   📝 Resume Download – Easily accessible resume for recruiters
   🔍 Project Filtering – Interactive project filtering by category or tech stack
-
 🚀 Features
   ✅ Responsive Design – Optimized for all devices (mobile, tablet, desktop)
   ✅ Animated UI – Smooth transitions and animations for a polished user experience
