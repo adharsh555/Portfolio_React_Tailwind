@@ -3,6 +3,15 @@ import { ArrowRight, ExternalLink, Github } from "lucide-react";
 const projects = [
   {
     id: 1,
+    title: "AI-Powered Resume Reviewer System",
+    description: "AI-powered resume reviewer that analyzes grammar, tone, and keyword matching against job descriptions to provide real-time feedback and improvement suggestions.",
+    image: "/projects/AI_Resume.png",
+    tags: ["React", "TailwindCSS", "FastAPI", "Python", "Huggingface"],
+    demoUrl: "#",
+    githubUrl: "https://github.com/adharsh555/AI-Powered-Resume-Reviewer",
+  },
+  {
+    id: 2,
     title: "Portfolio Landing Page",
     description: "A beautiful Portfolio using React and Tailwind.",
     image: "/projects/Portfolio.png",
@@ -12,7 +21,7 @@ const projects = [
   },
   
   {
-  id: 2,
+  id: 3,
   title: "Personal Blog Website",
   description:"Full-stack blog platform with responsive design and RESTful APIs using HTML, CSS, JavaScript, Node.js, and EJS.",
   image: "/projects/personal-blog.png", // Replace with actual image path
@@ -21,7 +30,7 @@ const projects = [
   githubUrl: "https://github.com/adharsh555/Blog", // Add actual GitHub repo URL
 },
 {
-  id: 3,
+  id: 4,
   title: "PETORIA – AI-Powered Pet Companion",
   description:
     "An AI-driven pet care platform offering behavior analysis, smart reminders, and real-time support using Firebase, FlutterFlow, and ML.",
