@@ -15,11 +15,11 @@ export const AboutMe = () => {
               Full-Stack Developer & Tech Enthusiast
            </h3>
                 <p className="text-muted-foreground">
-                  I'm a Jr. Software Engineer passionate about building responsive, user-friendly web applications with modern front-end and backend tools.
-                </p>
+                Junior Software Engineer | Building responsive, user-friendly web apps with modern stacks. 
+                Passionate about full-stack development and intuitive UX.                </p>
 
                 <p className="text-muted-foreground">
-                  Continuously learning and growing, I focus on creating clean, accessible, and efficient solutions using technologies like React, FastAPI, Node.
+                  Continuously learning and growing, focusing on creating clean, accessible, and efficient solutions using technologies like React, FastAPI, Node.
                 </p>
 
 

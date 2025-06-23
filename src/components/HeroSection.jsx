@@ -21,8 +21,8 @@ export const HeroSection = () => {
           </h1>
 
           <p className="text-lg md:text-xl text-muted-foreground max-2-2xl mx-auto opacity-0 animate-fade-in-delay-3">
-            I create seamless web experiences with modern technologies.
-            Specializing in full-stack development, I build interfaces that are both performant and user-centric.    
+            I build full-stack web applications where performance meets intuitive design.
+             Using modern technologies, I create seamless experiences that keep users engaged and satisfied.    
           </p>
 
           <div className="pt-4 opacity-0 animate-fade-in-delay-4">
