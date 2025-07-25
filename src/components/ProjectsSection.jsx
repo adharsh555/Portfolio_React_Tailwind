@@ -2,7 +2,17 @@ import { ArrowRight, ExternalLink, Github } from "lucide-react";
 
 const projects = [
   {
-    id: 1,
+  id: 1,
+  title: "AI-SecOps: Real-Time Threat Detection for AI Pipelines",
+  description:
+    "AI-SecOps is a real-time threat detection layer that secures your AI pipelines from prompt injections, misuse, and unauthorized access.",
+  image: "/projects/fire.png", // Replace with actual image path
+  tags: ["Python", "Flask", "AI", "Transformers", "Huggingface"],
+  demoUrl: "", // APK or demo link
+  githubUrl: "https://github.com/adharsh555/AI-secops#", // Research/publication link
+}
+,{
+    id: 2,
     title: "AI-Powered Resume Reviewer System",
     description: "AI-powered resume reviewer that analyzes grammar, tone, and keyword matching against job descriptions to provide real-time feedback and improvement suggestions.",
     image: "/projects/AI_Resume.png",
@@ -11,7 +21,7 @@ const projects = [
     githubUrl: "https://github.com/adharsh555/AI-Powered-Resume-Reviewer",
   },
   {
-    id: 2,
+    id: 3,
     title: "Portfolio Landing Page",
     description: "A beautiful Portfolio using React and Tailwind.",
     image: "/projects/Portfolio.png",
@@ -21,7 +31,7 @@ const projects = [
   },
   
   {
-  id: 3,
+  id: 4,
   title: "Personal Blog Website",
   description:"Full-stack blog platform with responsive design and RESTful APIs using HTML, CSS, JavaScript, Node.js, and EJS.",
   image: "/projects/personal-blog.png", // Replace with actual image path
@@ -30,7 +40,7 @@ const projects = [
   githubUrl: "https://github.com/adharsh555/Blog", // Add actual GitHub repo URL
 },
 {
-  id: 4,
+  id: 5,
   title: "PETORIA – AI-Powered Pet Companion",
   description:
     "An AI-driven pet care platform offering behavior analysis, smart reminders, and real-time support using Firebase, FlutterFlow, and ML.",
@@ -39,7 +49,6 @@ const projects = [
   demoUrl: "https://1024terabox.com/s/1GS1Zfe4OIjLittZ-0KS8_g", // APK or demo link
   githubUrl: "https://github.com/adharsh555/petoria", // Research/publication link
 }
-
 
 
 ];
