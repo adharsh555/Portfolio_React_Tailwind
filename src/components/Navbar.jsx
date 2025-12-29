@@ -1,91 +1,97 @@
-import { cn } from "@/lib/utils";
-import { Menu, X } from "lucide-react";
-import { useEffect, useState } from "react";
+import React, { useState, useEffect } from 'react';
+import { Menu, X, Code2 } from 'lucide-react';
+import { cn } from '../lib/utils';
 
-const navItems = [
-  { name: "Home", href: "#hero" },
-  { name: "About", href: "#about" },
-  { name: "Skills", href: "#skills" },
-  { name: "Projects", href: "#projects" },
-  { name: "Contact", href: "#contact" },
-];
-
-export const Navbar = () => {
+const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.screenY > 10);
+      setIsScrolled(window.scrollY > 20);
     };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const navLinks = [
+    { name: 'Home', href: '#' },
+    { name: 'About', href: '#about' },
+    { name: 'Skills', href: '#skills' },
+    { name: 'Projects', href: '#projects' },
+    { name: 'Contact', href: '#contact' },
+  ];
+
   return (
     <nav
       className={cn(
-        "fixed w-full z-40 transition-all duration-300",
-        isScrolled ? "py-3 bg-background/80 backdrop-blur-md shadow-xs" : "py-5"
+        "fixed top-0 left-0 w-full z-50 transition-all duration-300 px-6 py-4",
+        isScrolled ? "bg-background/80 backdrop-blur-md border-b border-border py-3" : "bg-transparent"
       )}
     >
-      <div className="container flex items-center justify-between">
-        <a
-          className="text-xl font-bold text-primary flex items-center"
-          href="#hero"
-        >
-          <span className="relative z-10">
-            <span className="text-glow text-foreground"> Adharsh P Ajayakumar </span>{" "}
-            Portfolio
-          </span>
-        </a>
+      <div className="max-w-7xl mx-auto flex justify-between items-center">
+        <div className="flex items-center gap-2 group cursor-pointer">
+          <div className="p-2 bg-primary rounded-lg group-hover:rotate-12 transition-transform">
+            <Code2 className="w-6 h-6 text-primary-foreground" />
+          </div>
+          <span className="text-xl font-bold tracking-tight">Adharsh P Ajayakumar</span>
+        </div>
 
-        {/* desktop nav */}
-        <div className="hidden md:flex space-x-8">
-          {navItems.map((item, key) => (
+        {/* Desktop Links */}
+        <div className="hidden md:flex items-center gap-8">
+          {navLinks.map((link) => (
             <a
-              key={key}
-              href={item.href}
-              className="text-foreground/80 hover:text-primary transition-colors duration-300"
+              key={link.name}
+              href={link.href}
+              className="text-sm font-medium hover:text-primary transition-colors duration-200"
             >
-              {item.name}
+              {link.name}
             </a>
           ))}
+          <a
+            href="./projects/Adharsh_P_Ajayakumar_CV.pdf"
+            download="Adharsh_Resume.pdf"
+            className="px-5 py-2 bg-primary text-primary-foreground rounded-full text-sm font-semibold hover:opacity-90 transition-all hover:scale-105 active:scale-95 shadow-lg shadow-primary/20"
+          >
+            Resume
+          </a>
         </div>
 
-        {/* mobile nav */}
-
+        {/* Mobile Menu Button */}
         <button
-          onClick={() => setIsMenuOpen((prev) => !prev)}
-          className="md:hidden p-2 text-foreground z-50"
-          aria-label={isMenuOpen ? "Close Menu" : "Open Menu"}
+          className="md:hidden p-2 text-foreground"
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
         >
-          {isMenuOpen ? <X size={24} /> : <Menu size={24} />}{" "}
+          {isMenuOpen ? <X /> : <Menu />}
         </button>
+      </div>
 
-        <div
-          className={cn(
-            "fixed inset-0 bg-background/95 backdroup-blur-md z-40 flex flex-col items-center justify-center",
-            "transition-all duration-300 md:hidden",
-            isMenuOpen
-              ? "opacity-100 pointer-events-auto"
-              : "opacity-0 pointer-events-none"
-          )}
-        >
-          <div className="flex flex-col space-y-8 text-xl">
-            {navItems.map((item, key) => (
+      {/* Mobile Menu */}
+      {isMenuOpen && (
+        <div className="md:hidden absolute top-full left-0 w-full bg-background/95 backdrop-blur-xl border-b border-border animate-fade-in">
+          <div className="flex flex-col p-6 gap-4">
+            {navLinks.map((link) => (
               <a
-                key={key}
-                href={item.href}
-                className="text-foreground/80 hover:text-primary transition-colors duration-300"
+                key={link.name}
+                href={link.href}
                 onClick={() => setIsMenuOpen(false)}
+                className="text-lg font-medium"
               >
-                {item.name}
+                {link.name}
               </a>
             ))}
+            <a
+              href="/resume.pdf"
+              download="Adharsh_Resume.pdf"
+              className="mt-2 px-5 py-3 bg-primary text-primary-foreground rounded-xl text-center font-bold shadow-lg shadow-primary/20"
+            >
+              Download Resume
+            </a>
           </div>
         </div>
-      </div>
+      )}
     </nav>
   );
 };
+
+export default Navbar;

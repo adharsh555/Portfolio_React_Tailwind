@@ -1,89 +1,72 @@
-import { Brain, Briefcase, Code } from "lucide-react";
+import React from 'react';
+import { Brain, Briefcase, Code, GraduationCap } from "lucide-react";
+import { cn } from '../lib/utils';
 
 export const AboutMe = () => {
   return (
-    <section id="about" className="py-24 px-4 relative">
-      {" "}
-      <div className="container mx-auto max-w-5xl">
-        <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">
-          About <span className="text-primary"> Me</span>
-        </h2>
+    <section id="about" className="py-24 px-6 relative overflow-hidden">
+      <div className="max-w-7xl mx-auto">
+        <div className="flex flex-col md:flex-row gap-16 items-start">
+          {/* Left Side: Text Content */}
+          <div className="flex-1 space-y-8 animate-fade-in">
+            <div className="space-y-4">
+              <h2 className="text-3xl md:text-5xl font-bold tracking-tight">
+                Behind the <span className="text-primary italic">Code</span>.
+              </h2>
+              <div className="w-20 h-1 bg-primary rounded-full transition-all duration-500 hover:w-32" />
+            </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          <div className="space-y-6">
-           <h3 className="text-2xl font-semibold">
-              Full-Stack Developer & Tech Enthusiast
-           </h3>
-                <p className="text-muted-foreground">
-                Junior Software Engineer | Building responsive, user-friendly web apps with modern stacks. 
-                Passionate about full-stack development and intuitive UX.                </p>
+            <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
+              <p>
+                I am a passionate Software Engineer dedicated to architecting solutions that solve complex problems.
+                My journey in tech is driven by an insatiable curiosity and a commitment to excellence.
+              </p>
+              <p>
+                With expertise across the full stack, I focus on creating performant, scalable, and inclusive
+                digital experiences. I believe that good software is not just about writing code, but about
+                understanding the "why" behind every feature.
+              </p>
+            </div>
 
-                <p className="text-muted-foreground">
-                  Continuously learning and growing, focusing on creating clean, accessible, and efficient solutions using technologies like React, FastAPI, Node.
-                </p>
-
-
-
-            <div className="flex flex-col sm:flex-row gap-4 pt-4 justify-center">
-              <a href="#contact" className="cosmic-button">
-                {" "}
-                Get In Touch
-              </a>
-
-            <a
-              href="./projects/Adharsh_P_Ajayakumar.pdf"
-              target="_blank"
-              download=""
-              rel="noopener noreferrer"
-              className="px-6 py-2 rounded-full border border-primary text-primary hover:bg-primary/10 transition-colors duration-300"
-            >
-              Download CV
-            </a>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-4">
+              <div className="flex items-center gap-4 p-4 bg-card/50 backdrop-blur-sm border border-border rounded-2xl hover:border-primary/50 transition-colors">
+                <Code className="w-6 h-6 text-primary" />
+                <span className="font-medium">Clean Architecture</span>
+              </div>
+              <div className="flex items-center gap-4 p-4 bg-card/50 backdrop-blur-sm border border-border rounded-2xl hover:border-primary/50 transition-colors">
+                <GraduationCap className="w-6 h-6 text-primary" />
+                <span className="font-medium">Continuous Learning</span>
+              </div>
             </div>
           </div>
 
-          <div className="grid grid-cols-1 gap-6">
-            <div className="gradient-border p-6 card-hover">
-              <div className="flex items-start gap-4">
-                <div className="p-3 rounded-full bg-primary/10">
-                  <Code className="h-6 w-6 text-primary" />
-                </div>
-                <div className="text-left">
-                  <h4 className="font-semibold text-lg"> Web Development</h4>
-                  <p className="text-muted-foreground">
-                    Creating responsive websites and web applications with
-                    modern frameworks.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="gradient-border p-6 card-hover">
-              <div className="flex items-start gap-4">
-                <div className="p-3 rounded-full bg-primary/10">
-                  <Brain className="h-6 w-6 text-primary" />
-                </div>
-                <div className="text-left">
-                  <h4 className="font-semibold text-lg">AI/ML Integration</h4>
-                  <p className="text-muted-foreground">
-                    Leveraging machine learning models and GPT for intelligent, interactive applications.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="gradient-border p-6 card-hover">
-              <div className="flex items-start gap-4">
-                <div className="p-3 rounded-full bg-primary/10">
-                  <Briefcase className="h-6 w-6 text-primary" />
-                </div>
+          {/* Right Side: Quick Stats/Highlights */}
+          <div className="w-full md:w-1/3 space-y-6 animate-fade-in">
+            <div className="p-8 bg-card border border-border rounded-3xl shadow-2xl shadow-primary/5 relative group overflow-hidden">
+              <div className="absolute top-0 right-0 w-24 h-24 bg-primary/10 rounded-full blur-3xl -mr-12 -mt-12 group-hover:bg-primary/20 transition-all" />
 
-                <div className="text-left">
-                  <h4 className="font-semibold text-lg">Project Management</h4>
-                  <p className="text-muted-foreground">
-                    Leading projects from conception to completion with agile
-                    methodologies.
-                  </p>
-                </div>
-              </div>
+              <h3 className="text-xl font-bold mb-6 flex items-center gap-2">
+                <Briefcase className="w-5 h-5 text-primary" />
+                Quick Highlights
+              </h3>
+
+              <ul className="space-y-4">
+                {[
+                  { label: 'Role', value: 'Software Engineer' },
+                  { label: 'Experience', value: 'Junior / Full Stack' },
+                  { label: 'Focus', value: 'Frontend & Backend' },
+                  { label: 'Location', value: 'Remote / Hybrid' },
+                ].map((stat) => (
+                  <li key={stat.label} className="flex justify-between border-b border-border/50 pb-2">
+                    <span className="text-sm text-muted-foreground">{stat.label}</span>
+                    <span className="text-sm font-semibold">{stat.value}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <button className="w-full mt-8 py-3 bg-card border border-primary text-primary font-bold rounded-xl hover:bg-primary hover:text-primary-foreground transition-all">
+                Download Resume
+              </button>
             </div>
           </div>
         </div>
@@ -91,4 +74,3 @@ export const AboutMe = () => {
     </section>
   );
 };
-

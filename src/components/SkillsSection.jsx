@@ -1,33 +1,35 @@
-import { useState } from "react";
-import { cn } from "@/lib/utils";
+import React, { useState } from "react";
+import { cn } from "../lib/utils";
+import { Code2, Server, Wrench, Layers, Terminal, Database, ShieldCheck, Cpu } from "lucide-react";
 
 const skills = [
   // Frontend
-  { name: "HTML/CSS", level: 80, category: "frontend" },
-  { name: "JavaScript", level: 75, category: "frontend" },
-  { name: "React", level: 80, category: "frontend" },
-  { name: "Tailwind CSS", level: 60, category: "frontend" },
-  { name: "Bootstrap", level: 75, category: "frontend" },
-  
+  { name: "React / Next.js", level: 90, category: "frontend" },
+  { name: "TypeScript", level: 85, category: "frontend" },
+  { name: "Tailwind CSS", level: 95, category: "frontend" },
+  { name: "Unit Testing (Jest)", level: 75, category: "frontend" },
+  { name: "State Management", level: 85, category: "frontend" },
 
   // Backend
-  { name: "Node.js", level: 80, category: "backend" },
-  { name: "Express", level: 75, category: "backend" },
-  { name: "MongoDB", level: 70, category: "backend" },
-  { name: "PostgreSQL", level: 65, category: "backend" },
-  { name: "RESTAPI", level: 60, category: "backend" },
-  { name: "Python", level: 70, category: "backend" },
-  { name: "Java", level: 50, category: "backend" },
+  { name: "Node.js (Express)", level: 85, category: "backend" },
+  { name: "System Design", level: 70, category: "backend" },
+  { name: "Prisma / PostgreSQL", level: 80, category: "backend" },
+  { name: "Redis / Caching", level: 65, category: "backend" },
+  { name: "REST / GraphQL", level: 90, category: "backend" },
 
-  
-
-  // Tools
-  { name: "Git/GitHub", level: 90, category: "tools" },
-  { name: "Docker", level: 50, category: "tools" },
-  { name: "VS Code", level: 75, category: "tools" },
+  // DevOps & Core
+  { name: "Docker / CI-CD", level: 75, category: "tools" },
+  { name: "Git / GitHub", level: 95, category: "tools" },
+  { name: "AWS Services", level: 50, category: "tools" },
+  { name: "Data Structures", level: 85, category: "tools" },
 ];
 
-const categories = ["all", "frontend", "backend", "tools"];
+const categories = [
+  { id: "all", name: "All Skills", icon: Layers },
+  { id: "frontend", name: "Frontend", icon: Code2 },
+  { id: "backend", name: "Backend", icon: Server },
+  { id: "tools", name: "DevOps & Core", icon: Wrench },
+];
 
 export const SkillsSection = () => {
   const [activeCategory, setActiveCategory] = useState("all");
@@ -35,55 +37,74 @@ export const SkillsSection = () => {
   const filteredSkills = skills.filter(
     (skill) => activeCategory === "all" || skill.category === activeCategory
   );
-  return (
-    <section id="skills" className="py-24 px-4 relative bg-secondary/30">
-      <div className="container mx-auto max-w-5xl">
-        <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">
-          My <span className="text-primary"> Skills</span>
-        </h2>
 
-        <div className="flex flex-wrap justify-center gap-4 mb-12">
-          {categories.map((category, key) => (
+  return (
+    <section id="skills" className="py-24 px-6 relative overflow-hidden">
+      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-border to-transparent" />
+
+      <div className="max-w-7xl mx-auto">
+        <div className="text-center space-y-4 mb-20 animate-fade-in">
+          <h2 className="text-3xl md:text-5xl font-bold tracking-tight">
+            Technical <span className="text-primary italic">Foundation</span>
+          </h2>
+          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+            A rigorous selection of industry-standard tools and methodologies I've mastered to build high-impact software.
+          </p>
+        </div>
+
+        {/* Category Filters */}
+        <div className="flex flex-wrap justify-center gap-4 mb-16">
+          {categories.map((cat) => (
             <button
-              key={key}
-              onClick={() => setActiveCategory(category)}
+              key={cat.id}
+              onClick={() => setActiveCategory(cat.id)}
               className={cn(
-                "px-5 py-2 rounded-full transition-colors duration-300 capitalize",
-                activeCategory === category
-                  ? "bg-primary text-primary-foreground"
-                  : "bg-secondary/70 text-forefround hover:bd-secondary"
+                "flex items-center gap-2 px-6 py-3 rounded-2xl font-bold transition-all duration-300 border-2",
+                activeCategory === cat.id
+                  ? "bg-primary border-primary text-primary-foreground shadow-xl shadow-primary/20 scale-105"
+                  : "bg-card border-border hover:border-primary/50 text-muted-foreground hover:text-foreground"
               )}
             >
-              {category}
+              <cat.icon className="w-4 h-4" />
+              {cat.name}
             </button>
           ))}
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredSkills.map((skill, key) => (
+        {/* Skills Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          {filteredSkills.map((skill, index) => (
             <div
-              key={key}
-              className="bg-card p-6 rounded-lg shadow-xs card-hover"
+              key={skill.name}
+              className="group p-8 bg-card/50 backdrop-blur-sm border border-border rounded-3xl hover:border-primary/50 transition-all duration-500 hover:shadow-2xl hover:shadow-primary/5 relative overflow-hidden"
+              style={{ animationDelay: `${index * 50}ms` }}
             >
-              <div className="text-left mb-4">
-                <h3 className="font-semibold text-lg"> {skill.name}</h3>
-              </div>
-              <div className="w-full bg-secondary/50 h-2 rounded-full overflow-hidden">
-                <div
-                  className="bg-primary h-2 rounded-full origin-left animate-[grow_1.5s_ease-out]"
-                  style={{ width: skill.level + "%" }}
-                />
-              </div>
+              <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-3xl -mr-16 -mt-16 group-hover:bg-primary/10 transition-colors" />
 
-              <div className="text-right mt-1">
-                <span className="text-sm text-muted-foreground">
-                  {skill.level}%
-                </span>
+              <div className="relative z-10 space-y-4">
+                <div className="flex justify-between items-center">
+                  <h3 className="font-bold text-lg tracking-tight group-hover:text-primary transition-colors">{skill.name}</h3>
+                  <span className="text-xs font-mono font-bold text-primary bg-primary/10 px-2 py-1 rounded-lg">
+                    {skill.level}%
+                  </span>
+                </div>
+
+                <div className="space-y-2">
+                  <div className="w-full h-2 bg-secondary/50 rounded-full overflow-hidden">
+                    <div
+                      className="h-full bg-primary transition-all duration-1000 ease-in-out group-hover:shadow-[0_0_10px_rgba(var(--primary),0.5)]"
+                      style={{ width: `${skill.level}%` }}
+                    />
+                  </div>
+                  <p className="text-[10px] text-muted-foreground uppercase tracking-widest font-bold">Proficiency</p>
+                </div>
               </div>
             </div>
           ))}
         </div>
       </div>
+
+      <div className="absolute bottom-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-border to-transparent" />
     </section>
   );
 };

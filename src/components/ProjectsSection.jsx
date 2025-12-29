@@ -1,130 +1,144 @@
-import { ArrowRight, ExternalLink, Github } from "lucide-react";
+import React from 'react';
+import { ExternalLink, Github, Code2, Sparkles, Brain, Dumbbell, Container, Share2 } from "lucide-react";
+import { cn } from "../lib/utils";
 
 const projects = [
   {
-  id: 1,
-  title: "AI-SecOps: Real-Time Threat Detection for AI Pipelines",
-  description:
-    "AI-SecOps is a real-time threat detection layer that secures your AI pipelines from prompt injections, misuse, and unauthorized access.",
-  image: "/projects/fire.png", // Replace with actual image path
-  tags: ["Python", "Flask", "AI", "Transformers", "Huggingface"],
-  demoUrl: "", // APK or demo link
-  githubUrl: "https://github.com/adharsh555/AI-secops#", // Research/publication link
-}
-,{
+    id: 1,
+    title: "AI Fitness Coach",
+    subtitle: "Personalized Health Assistant",
+    description: "An AI-powered fitness ecosystem built with Next.js 16. Generates tailored workout and diet plans using Gemini AI, featuring PDF exports, voice summaries, and AI image generation.",
+    tags: ["Next.js", "Gemini AI", "Tailwind CSS", "Framer Motion"],
+    githubUrl: "https://github.com/adharsh555/Ai_fitness_coach",
+    demoUrl: "https://ai-fitness-coach-adharsh.vercel.app/",
+    icon: Dumbbell
+  },
+  {
     id: 2,
-    title: "AI-Powered Resume Reviewer System",
-    description: "AI-powered resume reviewer that analyzes grammar, tone, and keyword matching against job descriptions to provide real-time feedback and improvement suggestions.",
-    image: "/projects/AI_Resume.png",
-    tags: ["React", "TailwindCSS", "FastAPI", "Python", "Huggingface"],
-    demoUrl: "#",
-    githubUrl: "https://github.com/adharsh555/AI-Powered-Resume-Reviewer",
+    title: "Semantic Engine AI",
+    subtitle: "High-Performance RAG Platform",
+    description: "A robust Retrieval-Augmented Generation (RAG) platform using Gemini embeddings and pgvector. Transforms unstructured documentation into a cited, context-aware knowledge base.",
+    tags: ["React", "Node.js", "PostgreSQL", "Gemini API"],
+    githubUrl: "https://github.com/adharsh555/Semantic-Engine-AI-Retrieval",
+    demoUrl: "https://semantic-retrieval-ai.vercel.app/",
+    icon: Brain
   },
   {
     id: 3,
-    title: "Portfolio Landing Page",
-    description: "A beautiful Portfolio using React and Tailwind.",
-    image: "/projects/Portfolio.png",
-    tags: ["React", "TailwindCSS"],
-    demoUrl: "#",
-    githubUrl: "#",
+    title: "Product Importer",
+    subtitle: "Containerized Background Processor",
+    description: "A high-performance product importer using FastAPI and Celery. Supports streaming CSV uploads, background processing via Redis, and real-time progress updates via SSE.",
+    tags: ["FastAPI", "Celery", "Redis", "Docker", "PostgreSQL"],
+    githubUrl: "https://github.com/adharsh555/Product_Importer_",
+    demoUrl: "https://product-importer-csv-production.up.railway.app/",
+    icon: Container
   },
-  
   {
-  id: 4,
-  title: "Personal Blog Website",
-  description:"Full-stack blog platform with responsive design and RESTful APIs using HTML, CSS, JavaScript, Node.js, and EJS.",
-  image: "/projects/personal-blog.png", // Replace with actual image path
-  tags: ["HTML5", "CSS3", "JavaScript", "Node.js", "Express.js", "EJS"],
-  demoUrl: "#", // Add actual demo URL if hosted
-  githubUrl: "https://github.com/adharsh555/Blog", // Add actual GitHub repo URL
-},
-{
-  id: 5,
-  title: "PETORIA – AI-Powered Pet Companion",
-  description:
-    "An AI-driven pet care platform offering behavior analysis, smart reminders, and real-time support using Firebase, FlutterFlow, and ML.",
-  image: "/projects/petoria.png", // Replace with actual image path
-  tags: ["FlutterFlow", "Firebase", "AI", "Machine Learning"],
-  demoUrl: "https://1024terabox.com/s/1GS1Zfe4OIjLittZ-0KS8_g", // APK or demo link
-  githubUrl: "https://github.com/adharsh555/petoria", // Research/publication link
-}
-
-
+    id: 4,
+    title: "Pair Programming Prototype",
+    subtitle: "Real-time Collaborative Editor",
+    description: "A real-time collaborative coding environment powered by FastAPI WebSockets. Features instant document sync, room-based collaboration, and persistent editor states.",
+    tags: ["FastAPI", "WebSockets", "React", "Redux Toolkit"],
+    githubUrl: "https://github.com/adharsh555/Real-time-Pair-Programming-Prototype",
+    demoUrl: "https://collaborative-coding-adharsh.vercel.app/", // Placeholder
+    icon: Share2
+  },
+  {
+    id: 5,
+    title: "AI-SecOps",
+    subtitle: "Real-Time Threat Detection",
+    description: "A robust security layer for AI pipelines, detecting prompt injections and unauthorized access in real-time.",
+    tags: ["Python", "Transformers", "Huggingface", "Flask"],
+    githubUrl: "https://github.com/adharsh555/AI-secops",
+    icon: Sparkles
+  },
+  {
+    id: 6,
+    title: "Petoria",
+    subtitle: "AI Pet Companion",
+    description: "An AI-driven pet care platform offering behavior analysis and smart health reminders. Integrated ML for mood detection.",
+    tags: ["FlutterFlow", "Firebase", "Machine Learning"],
+    demoUrl: "https://1024terabox.com/s/1GS1Zfe4OIjLittZ-0KS8_g",
+    githubUrl: "https://github.com/adharsh555/petoria",
+    icon: Sparkles
+  }
 ];
 
 export const ProjectsSection = () => {
   return (
-    <section id="projects" className="py-24 px-4 relative">
-      <div className="container mx-auto max-w-5xl">
-        <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center">
-          {" "}
-          Featured <span className="text-primary"> Projects </span>
-        </h2>
-
-        <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
-          Here are some of my recent projects. Each project was carefully
-          crafted with attention to detail, performance, and user experience.
-        </p>
+    <section id="projects" className="py-24 px-6 relative">
+      <div className="max-w-7xl mx-auto">
+        <div className="flex flex-col md:flex-row justify-between items-end gap-6 mb-16">
+          <div className="space-y-4">
+            <h2 className="text-3xl md:text-5xl font-bold tracking-tight">
+              Featured <span className="text-primary italic">Works</span>
+            </h2>
+            <p className="text-muted-foreground text-lg max-w-xl">
+              A selection of projects that demonstrate my ability to build complex,
+              high-impact software solutions with modern AI and real-time capabilities.
+            </p>
+          </div>
+          <a
+            href="https://github.com/adharsh555"
+            target="_blank"
+            className="text-sm font-bold flex items-center gap-2 hover:text-primary transition-colors pb-2"
+          >
+            All Repositories <ExternalLink className="w-4 h-4" />
+          </a>
+        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project, key) => (
+          {projects.map((project, index) => (
             <div
-              key={key}
-              className="group bg-card rounded-lg overflow-hidden shadow-xs card-hover"
+              key={project.id}
+              className="group relative bg-card border border-border rounded-3xl overflow-hidden hover:border-primary/50 transition-all duration-500 hover:shadow-2xl hover:shadow-primary/5 p-8"
+              style={{ animationDelay: `${index * 100}ms` }}
             >
-              <div className="h-48 overflow-hidden">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                />
-              </div>
+              <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full -mr-16 -mt-16 group-hover:bg-primary/10 transition-all" />
 
-              <div className="p-6">
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {project.tags.map((tag) => (
-                    <span className="px-2 py-1 text-xs font-medium border rounded-full bg-secondary text-secondary-foreground">
+              <div className="relative z-10 space-y-6">
+                <div className="p-3 bg-secondary/50 rounded-2xl w-fit group-hover:bg-primary/10 transition-colors">
+                  <project.icon className="w-6 h-6 text-primary" />
+                </div>
+
+                <div className="space-y-2">
+                  <h3 className="text-2xl font-bold tracking-tight">{project.title}</h3>
+                  <p className="text-xs font-semibold text-primary/80 uppercase tracking-widest">{project.subtitle}</p>
+                </div>
+
+                <p className="text-muted-foreground leading-relaxed h-20 overflow-hidden line-clamp-3">
+                  {project.description}
+                </p>
+
+                <div className="flex flex-wrap gap-2">
+                  {project.tags.map(tag => (
+                    <span key={tag} className="px-3 py-1 bg-secondary/30 text-[10px] font-bold rounded-lg border border-border/50 uppercase tracking-wider">
                       {tag}
                     </span>
                   ))}
                 </div>
 
-                <h3 className="text-xl font-semibold mb-1"> {project.title}</h3>
-                <p className="text-muted-foreground text-sm mb-4">
-                  {project.description}
-                </p>
-                <div className="flex justify-between items-center">
-                  <div className="flex space-x-3">
+                <div className="flex items-center gap-6 pt-4">
+                  <a
+                    href={project.githubUrl}
+                    target="_blank"
+                    className="flex items-center gap-2 text-sm font-bold hover:text-primary transition-colors"
+                  >
+                    <Github className="w-4 h-4" /> Code
+                  </a>
+                  {project.demoUrl && (
                     <a
                       href={project.demoUrl}
                       target="_blank"
-                      className="text-foreground/80 hover:text-primary transition-colors duration-300"
+                      className="flex items-center gap-2 text-sm font-bold hover:text-primary transition-colors"
                     >
-                      <ExternalLink size={20} />
+                      <ExternalLink className="w-4 h-4" /> Demo
                     </a>
-                    <a
-                      href={project.githubUrl}
-                      target="_blank"
-                      className="text-foreground/80 hover:text-primary transition-colors duration-300"
-                    >
-                      <Github size={20} />
-                    </a>
-                  </div>
+                  )}
                 </div>
               </div>
             </div>
           ))}
-        </div>
-
-        <div className="text-center mt-12">
-          <a
-            className="cosmic-button w-fit flex items-center mx-auto gap-2"
-            target="_blank"
-            href="https://github.com/adharsh555"
-          >
-            Check My Github <ArrowRight size={16} />
-          </a>
         </div>
       </div>
     </section>

@@ -1,0 +1,107 @@
+import React, { useMemo } from 'react';
+import { useEnvironment } from '../context/EnvironmentContext';
+import { cn } from '../lib/utils';
+
+export const OverlaySystem = () => {
+    const { season, timeMode } = useEnvironment();
+
+    const particles = useMemo(() => {
+        const count = season === 'summer' ? 0 : 50;
+        return Array.from({ length: count }).map((_, i) => ({
+            id: i,
+            left: `${Math.random() * 100}%`,
+            delay: `${Math.random() * 5}s`,
+            duration: `${4 + Math.random() * 4}s`,
+            size: `${2 + Math.random() * 4}px`,
+            opacity: 0.3 + Math.random() * 0.7
+        }));
+    }, [season]);
+
+    const stars = useMemo(() => {
+        if (timeMode !== 'night') return [];
+        return Array.from({ length: 80 }).map((_, i) => ({
+            id: i,
+            top: `${Math.random() * 100}%`,
+            left: `${Math.random() * 100}%`,
+            delay: `${Math.random() * 10}s`,
+            duration: `${2 + Math.random() * 3}s`,
+            size: `${Math.random() * 2 + 1}px`
+        }));
+    }, [timeMode]);
+
+    return (
+        <div className="fixed inset-0 pointer-events-none z-[5] overflow-hidden">
+            {/* Night Sky Elements */}
+            {timeMode === 'night' && (
+                <div className="absolute inset-0">
+                    {/* Twinkling Stars */}
+                    {stars.map(star => (
+                        <div
+                            key={`star-${star.id}`}
+                            className="absolute bg-white rounded-full animate-[star-twinkle_infinite_ease-in-out]"
+                            style={{
+                                top: star.top,
+                                left: star.left,
+                                width: star.size,
+                                height: star.size,
+                                animationDelay: star.delay,
+                                animationDuration: star.duration,
+                                boxShadow: '0 0 5px rgba(255,255,255,0.5)'
+                            }}
+                        />
+                    ))}
+                </div>
+            )}
+
+            {/* Seasonal Effects */}
+            {season === 'winter' && particles.map(p => (
+                <div
+                    key={`snow-${p.id}`}
+                    className="absolute top-[-20px] bg-white rounded-full animate-[fall_linear_infinite]"
+                    style={{
+                        left: p.left,
+                        width: p.size,
+                        height: p.size,
+                        animationDelay: p.delay,
+                        animationDuration: p.duration,
+                        opacity: p.opacity
+                    }}
+                />
+            ))}
+
+            {season === 'monsoon' && particles.map(p => (
+                <div
+                    key={`rain-${p.id}`}
+                    className="absolute top-[-20px] bg-blue-400/30 rounded-full animate-[fall_linear_infinite]"
+                    style={{
+                        left: p.left,
+                        width: '1px',
+                        height: '20px',
+                        animationDelay: p.delay,
+                        animationDuration: p.duration,
+                    }}
+                />
+            ))}
+
+            {season === 'spring' && particles.map(p => (
+                <div
+                    key={`petal-${p.id}`}
+                    className="absolute top-[-20px] bg-pink-300/60 rounded-full animate-[fall_linear_infinite,sway_ease-in-out_infinite]"
+                    style={{
+                        left: p.left,
+                        width: p.size,
+                        height: p.size,
+                        animationDelay: p.delay,
+                        animationDuration: p.duration,
+                    }}
+                />
+            ))}
+
+            {season === 'summer' && (
+                <div className="absolute inset-0 bg-orange-500/5 animate-[shimmer-heat_10s_linear_infinite] overflow-hidden">
+                    <div className="absolute top-20 right-20 w-96 h-96 bg-yellow-400/10 rounded-full blur-[120px]" />
+                </div>
+            )}
+        </div>
+    );
+};
