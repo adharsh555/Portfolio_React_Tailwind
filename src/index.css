@@ -191,41 +191,14 @@
   }
 
   @keyframes wind-gust {
-
-    0%,
-    100% {
-      transform: translateX(0);
-    }
-
-    25% {
-      transform: translateX(30px) skewX(-2deg);
-    }
-
-    75% {
-      transform: translateX(-10px) skewX(1deg);
-    }
+    0%, 100% { transform: translateX(0) rotate(0deg); }
+    30% { transform: translateX(100px) rotate(2deg) skewX(-5deg); }
+    70% { transform: translateX(-20px) rotate(-1deg) skewX(2deg); }
   }
 
-  @keyframes wind-streak {
-    0% {
-      transform: translateX(-100vw) translateY(0) scale(0, 1);
-      opacity: 0;
-    }
-
-    20% {
-      opacity: 0.3;
-      transform: translateX(-80vw) translateY(4px) scale(1, 1);
-    }
-
-    80% {
-      opacity: 0.3;
-      transform: translateX(80vw) translateY(16px) scale(1, 1);
-    }
-
-    100% {
-      transform: translateX(100vw) translateY(20px) scale(0, 1);
-      opacity: 0;
-    }
+  @keyframes particle-drift {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(50px); }
   }
 
   @keyframes star-twinkle {

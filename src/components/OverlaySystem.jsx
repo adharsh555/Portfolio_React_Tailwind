@@ -40,17 +40,6 @@ export const OverlaySystem = () => {
         }));
     }, [timeMode]);
 
-    const windStreaks = useMemo(() => {
-        if (!isWindy) return [];
-        return Array.from({ length: 5 }).map((_, i) => ({
-            id: i,
-            top: `${Math.random() * 100}%`,
-            delay: `${Math.random() * 2}s`,
-            duration: `${1 + Math.random() * 2}s`,
-            width: `${100 + Math.random() * 200}px`
-        }));
-    }, [isWindy]);
-
     return (
         <div className="fixed inset-0 pointer-events-none z-[5] overflow-hidden">
             {/* Night Sky Elements */}
@@ -75,37 +64,27 @@ export const OverlaySystem = () => {
                 </div>
             )}
 
-            {/* Wind Streaks */}
-            {isWindy && windStreaks.map(streak => (
-                <div
-                    key={`streak-${streak.id}`}
-                    className="absolute h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent animate-[wind-streak_linear_infinite]"
-                    style={{
-                        top: streak.top,
-                        width: streak.width,
-                        animationDelay: streak.delay,
-                        animationDuration: streak.duration
-                    }}
-                />
-            ))}
-
             {/* Physical Effects Wrapper (affected by wind gust) */}
             <div className={cn(
-                "absolute inset-0 transition-transform duration-1000",
-                isWindy && "animate-[wind-gust_5s_ease-in-out_infinite]"
+                "absolute inset-0 transition-transform duration-[2000ms] ease-in-out",
+                isWindy ? "animate-[wind-gust_8s_infinite_ease-in-out]" : "translate-x-0"
             )}>
                 {/* Seasonal Effects */}
                 {season === 'winter' && particles.map(p => (
                     <div
                         key={`snow-${p.id}`}
-                        className="absolute top-[-20px] bg-white rounded-full animate-[fall_linear_infinite]"
+                        className={cn(
+                            "absolute top-[-20px] bg-white rounded-full transition-all duration-1000",
+                            "animate-[fall_linear_infinite]"
+                        )}
                         style={{
                             left: p.left,
                             width: p.size,
                             height: p.size,
                             animationDelay: p.delay,
                             animationDuration: p.duration,
-                            opacity: p.opacity
+                            opacity: p.opacity,
+                            transform: isWindy ? 'translateX(100px) rotate(20deg)' : 'translateX(0)'
                         }}
                     />
                 ))}
@@ -120,6 +99,7 @@ export const OverlaySystem = () => {
                             height: '20px',
                             animationDelay: p.delay,
                             animationDuration: p.duration,
+                            transform: isWindy ? 'translateX(30px) rotate(15deg)' : 'translateX(0)'
                         }}
                     />
                 ))}
@@ -134,6 +114,7 @@ export const OverlaySystem = () => {
                             height: p.size,
                             animationDelay: p.delay,
                             animationDuration: p.duration,
+                            transform: isWindy ? 'translateX(150px) rotate(45deg)' : 'translateX(0)'
                         }}
                     />
                 ))}
