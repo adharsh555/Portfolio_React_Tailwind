@@ -1,9 +1,20 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useState, useEffect } from 'react';
 import { useEnvironment } from '../context/EnvironmentContext';
 import { cn } from '../lib/utils';
 
 export const OverlaySystem = () => {
     const { season, timeMode } = useEnvironment();
+    const [isWindy, setIsWindy] = useState(false);
+
+    useEffect(() => {
+        const toggleWind = () => {
+            setIsWindy(prev => !prev);
+            const nextInterval = isWindy ? Math.random() * 10000 + 10000 : Math.random() * 5000 + 5000;
+            setTimeout(toggleWind, nextInterval);
+        };
+        const timer = setTimeout(toggleWind, 5000);
+        return () => clearTimeout(timer);
+    }, [isWindy]);
 
     const particles = useMemo(() => {
         const count = season === 'summer' ? 0 : 50;
@@ -29,6 +40,17 @@ export const OverlaySystem = () => {
         }));
     }, [timeMode]);
 
+    const windStreaks = useMemo(() => {
+        if (!isWindy) return [];
+        return Array.from({ length: 5 }).map((_, i) => ({
+            id: i,
+            top: `${Math.random() * 100}%`,
+            delay: `${Math.random() * 2}s`,
+            duration: `${1 + Math.random() * 2}s`,
+            width: `${100 + Math.random() * 200}px`
+        }));
+    }, [isWindy]);
+
     return (
         <div className="fixed inset-0 pointer-events-none z-[5] overflow-hidden">
             {/* Night Sky Elements */}
@@ -38,7 +60,7 @@ export const OverlaySystem = () => {
                     {stars.map(star => (
                         <div
                             key={`star-${star.id}`}
-                            className="absolute bg-white rounded-full animate-[star-twinkle_infinite_ease-in-out]"
+                            className="absolute bg-white rounded-full animate-[star-twinkle_1.5s_infinite_ease-in-out]"
                             style={{
                                 top: star.top,
                                 left: star.left,
@@ -53,49 +75,69 @@ export const OverlaySystem = () => {
                 </div>
             )}
 
-            {/* Seasonal Effects */}
-            {season === 'winter' && particles.map(p => (
+            {/* Wind Streaks */}
+            {isWindy && windStreaks.map(streak => (
                 <div
-                    key={`snow-${p.id}`}
-                    className="absolute top-[-20px] bg-white rounded-full animate-[fall_linear_infinite]"
+                    key={`streak-${streak.id}`}
+                    className="absolute h-[1px] bg-gradient-to-r from-transparent via-white/20 to-transparent animate-[wind-streak_linear_infinite]"
                     style={{
-                        left: p.left,
-                        width: p.size,
-                        height: p.size,
-                        animationDelay: p.delay,
-                        animationDuration: p.duration,
-                        opacity: p.opacity
+                        top: streak.top,
+                        width: streak.width,
+                        animationDelay: streak.delay,
+                        animationDuration: streak.duration
                     }}
                 />
             ))}
 
-            {season === 'monsoon' && particles.map(p => (
-                <div
-                    key={`rain-${p.id}`}
-                    className="absolute top-[-20px] bg-blue-400/30 rounded-full animate-[fall_linear_infinite]"
-                    style={{
-                        left: p.left,
-                        width: '1px',
-                        height: '20px',
-                        animationDelay: p.delay,
-                        animationDuration: p.duration,
-                    }}
-                />
-            ))}
+            {/* Physical Effects Wrapper (affected by wind gust) */}
+            <div className={cn(
+                "absolute inset-0 transition-transform duration-1000",
+                isWindy && "animate-[wind-gust_5s_ease-in-out_infinite]"
+            )}>
+                {/* Seasonal Effects */}
+                {season === 'winter' && particles.map(p => (
+                    <div
+                        key={`snow-${p.id}`}
+                        className="absolute top-[-20px] bg-white rounded-full animate-[fall_linear_infinite]"
+                        style={{
+                            left: p.left,
+                            width: p.size,
+                            height: p.size,
+                            animationDelay: p.delay,
+                            animationDuration: p.duration,
+                            opacity: p.opacity
+                        }}
+                    />
+                ))}
 
-            {season === 'spring' && particles.map(p => (
-                <div
-                    key={`petal-${p.id}`}
-                    className="absolute top-[-20px] bg-pink-300/60 rounded-full animate-[fall_linear_infinite,sway_ease-in-out_infinite]"
-                    style={{
-                        left: p.left,
-                        width: p.size,
-                        height: p.size,
-                        animationDelay: p.delay,
-                        animationDuration: p.duration,
-                    }}
-                />
-            ))}
+                {season === 'monsoon' && particles.map(p => (
+                    <div
+                        key={`rain-${p.id}`}
+                        className="absolute top-[-20px] bg-blue-400/30 rounded-full animate-[fall_linear_infinite]"
+                        style={{
+                            left: p.left,
+                            width: '1px',
+                            height: '20px',
+                            animationDelay: p.delay,
+                            animationDuration: p.duration,
+                        }}
+                    />
+                ))}
+
+                {season === 'spring' && particles.map(p => (
+                    <div
+                        key={`petal-${p.id}`}
+                        className="absolute top-[-20px] bg-pink-300/60 rounded-full animate-[fall_linear_infinite,sway_ease-in-out_infinite]"
+                        style={{
+                            left: p.left,
+                            width: p.size,
+                            height: p.size,
+                            animationDelay: p.delay,
+                            animationDuration: p.duration,
+                        }}
+                    />
+                ))}
+            </div>
 
             {season === 'summer' && (
                 <div className="absolute inset-0 bg-orange-500/5 animate-[shimmer-heat_10s_linear_infinite] overflow-hidden">
