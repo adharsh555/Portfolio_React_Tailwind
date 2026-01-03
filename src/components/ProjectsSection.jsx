@@ -40,7 +40,7 @@ const projects = [
     description: "A real-time collaborative coding environment powered by FastAPI WebSockets. Features instant document sync, room-based collaboration, and persistent editor states.",
     tags: ["FastAPI", "WebSockets", "React", "Redux Toolkit"],
     githubUrl: "https://github.com/adharsh555/Real-time-Pair-Programming-Prototype",
-    demoUrl: "https://collaborative-coding-adharsh.vercel.app/", // Placeholder
+    demoUrl: "https://live-pair-program.up.railway.app/",
     icon: Share2
   },
   {
@@ -66,14 +66,14 @@ const projects = [
 
 export const ProjectsSection = () => {
   return (
-    <section id="projects" className="py-24 px-6 relative">
+    <section id="projects" className="py-20 md:py-24 px-4 sm:px-6 relative">
       <div className="max-w-7xl mx-auto">
-        <div className="flex flex-col md:flex-row justify-between items-end gap-6 mb-16">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-16">
           <div className="space-y-4">
             <h2 className="text-3xl md:text-5xl font-bold tracking-tight">
               Featured <span className="text-primary italic">Works</span>
             </h2>
-            <p className="text-muted-foreground text-lg max-w-xl">
+            <p className="text-muted-foreground text-base md:text-lg max-w-xl">
               A selection of projects that demonstrate my ability to build complex,
               high-impact software solutions with modern AI and real-time capabilities.
             </p>
@@ -87,38 +87,38 @@ export const ProjectsSection = () => {
           </a>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {projects.map((project, index) => (
             <div
               key={project.id}
-              className="group relative bg-card border border-border rounded-3xl overflow-hidden hover:border-primary/50 transition-all duration-500 hover:shadow-2xl hover:shadow-primary/5 p-8"
+              className="group relative bg-card border border-border rounded-2xl md:rounded-3xl overflow-hidden hover:border-primary/50 transition-all duration-500 hover:shadow-2xl hover:shadow-primary/5 p-6 md:p-8"
               style={{ animationDelay: `${index * 100}ms` }}
             >
               <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full -mr-16 -mt-16 group-hover:bg-primary/10 transition-all" />
 
               <div className="relative z-10 space-y-6">
-                <div className="p-3 bg-secondary/50 rounded-2xl w-fit group-hover:bg-primary/10 transition-colors">
-                  <project.icon className="w-6 h-6 text-primary" />
+                <div className="p-3 bg-secondary/50 rounded-xl md:rounded-2xl w-fit group-hover:bg-primary/10 transition-colors">
+                  <project.icon className="w-5 h-5 md:w-6 md:h-6 text-primary" />
                 </div>
 
                 <div className="space-y-2">
-                  <h3 className="text-2xl font-bold tracking-tight">{project.title}</h3>
-                  <p className="text-xs font-semibold text-primary/80 uppercase tracking-widest">{project.subtitle}</p>
+                  <h3 className="text-xl md:text-2xl font-bold tracking-tight">{project.title}</h3>
+                  <p className="text-[10px] md:text-xs font-semibold text-primary/80 uppercase tracking-widest">{project.subtitle}</p>
                 </div>
 
-                <p className="text-muted-foreground leading-relaxed h-20 overflow-hidden line-clamp-3">
+                <p className="text-sm md:text-base text-muted-foreground leading-relaxed h-auto md:h-20 overflow-hidden line-clamp-3">
                   {project.description}
                 </p>
 
                 <div className="flex flex-wrap gap-2">
                   {project.tags.map(tag => (
-                    <span key={tag} className="px-3 py-1 bg-secondary/30 text-[10px] font-bold rounded-lg border border-border/50 uppercase tracking-wider">
+                    <span key={tag} className="px-2 py-0.5 md:px-3 md:py-1 bg-secondary/30 text-[9px] md:text-[10px] font-bold rounded-lg border border-border/50 uppercase tracking-wider">
                       {tag}
                     </span>
                   ))}
                 </div>
 
-                <div className="flex items-center gap-6 pt-4">
+                <div className="flex items-center gap-6 pt-2 md:pt-4">
                   <a
                     href={project.githubUrl}
                     target="_blank"

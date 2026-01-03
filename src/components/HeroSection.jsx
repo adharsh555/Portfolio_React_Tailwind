@@ -7,40 +7,40 @@ const HeroSection = () => {
   const { timeMode, season } = useEnvironment();
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden px-6">
+    <section className="relative min-h-[100dvh] flex items-center justify-center overflow-hidden px-4 sm:px-6 py-20">
       {/* Dynamic Background Elements */}
       <div className="absolute inset-0 z-0">
         <div className={cn(
-          "absolute top-20 right-[10%] w-64 h-64 rounded-full blur-3xl opacity-20 transition-all duration-1000",
+          "absolute top-10 md:top-20 right-[5%] md:right-[10%] w-48 h-48 md:w-64 md:h-64 rounded-full blur-3xl opacity-20 transition-all duration-1000",
           timeMode === 'day' ? "bg-yellow-400" : "bg-blue-600"
         )} />
         <div className={cn(
-          "absolute bottom-20 left-[10%] w-96 h-96 rounded-full blur-3xl opacity-10 transition-all duration-1000",
+          "absolute bottom-10 md:bottom-20 left-[5%] md:left-[10%] w-64 h-64 md:w-96 md:h-96 rounded-full blur-3xl opacity-10 transition-all duration-1000",
           timeMode === 'day' ? "bg-orange-300" : "bg-purple-800"
         )} />
       </div>
 
       <div className={cn(
-        "relative z-10 max-w-4xl text-center space-y-8 animate-fade-in",
+        "relative z-10 max-w-4xl w-full text-center space-y-6 md:space-y-8 animate-fade-in",
         season === 'summer' && "animate-[melt_10s_ease-in-out_infinite]"
       )}>
         <div className="space-y-4">
-          <h2 className="text-primary font-semibold tracking-wider text-sm uppercase">
+          <h2 className="text-primary font-semibold tracking-wider text-xs md:text-sm uppercase">
             Available for new opportunities
           </h2>
-          <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight">
+          <h1 className="text-4xl sm:text-5xl md:text-7xl font-extrabold tracking-tight leading-[1.1]">
             Crafting <span className="text-primary italic">Digital Excellence</span> as a Software Engineer
           </h1>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed px-4">
             I specialize in building robust, scalable applications with a focus on
             exceptional user experience and performance-driven code.
           </p>
         </div>
 
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4 sm:pt-6">
           <button
             onClick={() => document.getElementById('projects').scrollIntoView({ behavior: 'smooth' })}
-            className="group px-8 py-4 bg-primary text-primary-foreground rounded-full font-bold flex items-center gap-2 hover:opacity-90 transition-all hover:scale-105 active:scale-95 shadow-xl shadow-primary/30"
+            className="w-full sm:w-auto group px-8 py-4 bg-primary text-primary-foreground rounded-full font-bold flex items-center justify-center gap-2 hover:opacity-90 transition-all hover:scale-105 active:scale-95 shadow-xl shadow-primary/30"
           >
             View Projects
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
@@ -48,11 +48,11 @@ const HeroSection = () => {
           <a
             href="./projects/Adharsh_P_Ajayakumar_CV.pdf"
             download="Adharsh_Resume.pdf"
-            className="px-8 py-4 bg-secondary text-secondary-foreground border border-border rounded-full font-bold flex items-center gap-2 hover:bg-secondary/80 transition-all hover:scale-105 active:scale-95"
+            className="w-full sm:w-auto px-8 py-4 bg-secondary text-secondary-foreground border border-border rounded-full font-bold flex items-center justify-center gap-2 hover:bg-secondary/80 transition-all hover:scale-105 active:scale-95"
           >
             Download Resume
           </a>
-          <div className="flex items-center gap-4 px-4 py-3 bg-card border border-border rounded-full">
+          <div className="flex items-center gap-6 md:gap-4 px-6 md:px-4 py-3 bg-card/50 backdrop-blur-sm border border-border rounded-full mt-2 sm:mt-0">
             <a href="https://github.com/adharsh555" target="_blank" rel="noopener noreferrer" title="GitHub">
               <Github className="w-6 h-6 cursor-pointer hover:text-primary transition-colors" />
             </a>
@@ -66,9 +66,9 @@ const HeroSection = () => {
         </div>
       </div>
 
-      {/* Unique Liquid Drop Scroll Indicator */}
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 group cursor-pointer">
-        <div className="relative h-16 w-[2px]">
+      {/* Unique Liquid Drop Scroll Indicator - Hidden on very small screens */}
+      <div className="absolute bottom-6 md:bottom-10 left-1/2 -translate-x-1/2 hidden sm:flex flex-col items-center gap-4 group cursor-pointer">
+        <div className="relative h-12 md:h-16 w-[2px]">
           {/* The Line */}
           <div className="absolute inset-0 bg-primary/20 rounded-full animate-[line-glow_2s_infinite]" />
           {/* The Drop */}
