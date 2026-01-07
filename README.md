@@ -1,10 +1,10 @@
-# 🌌 Astral Pathfinder | Portfolio v2.0
+#  Portfolio v2.0
 
 A high-performance, recruiter-centric developer portfolio built with a focus on **AI-driven industry impact**, **environmental physics**, and **technical transparency**. This isn't just a site; it's a technical demonstration of modern frontend engineering.
 
 ---
 
-## 🚀 The Recruiter Advantage
+## The Recruiter Advantage
 
 This portfolio is engineered to solve the "7-Second Recruiter Scan" problem:
 - **Narrative-First Hero**: Clearly defines role, focus, and career intermediate status.
@@ -14,7 +14,7 @@ This portfolio is engineered to solve the "7-Second Recruiter Scan" problem:
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 - **Core**: React 18 + Vite (Zero-lag HMR)
 - **Styling**: Tailwind CSS v4 (Modern utility-first architecture)
@@ -24,7 +24,7 @@ This portfolio is engineered to solve the "7-Second Recruiter Scan" problem:
 
 ---
 
-## ❄️ The Environment Engine (`EnvironmentContext`)
+## The Environment Engine (`EnvironmentContext`)
 
 One of the project's unique features is its persistent environment engine, which manages:
 - **Persistent Night Mode**: Defaults to a high-contrast dark theme, accessible via a custom context provider.
@@ -36,7 +36,7 @@ One of the project's unique features is its persistent environment engine, which
 
 ---
 
-## 📂 Project Structure
+## Project Structure
 
 ```text
 src/
@@ -50,7 +50,7 @@ src/
 
 ---
 
-## ⚙️ Setup & Configuration
+## Setup & Configuration
 
 ### 1. Installation
 ```bash
@@ -72,9 +72,7 @@ formData.append("access_key", "YOUR_ACCESS_KEY_HERE");
 
 ---
 
-## 📄 License
 
-MIT. Feel free to fork and adapt it for your own professional journey.
 
 ---
 *Built with ❤️ to demonstrate that intermediate engineers are the most trainable and high-impact hires.*
