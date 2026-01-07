@@ -26,14 +26,14 @@ const HeroSection = () => {
       )}>
         <div className="space-y-4">
           <h2 className="text-primary font-semibold tracking-wider text-xs md:text-sm uppercase">
-            Available for new opportunities
+            Full-Stack Developer • AI Enthusiast
           </h2>
           <h1 className="text-4xl sm:text-5xl md:text-7xl font-extrabold tracking-tight leading-[1.1]">
-            Crafting <span className="text-primary italic">Digital Excellence</span> as a Software Engineer
+            Building <span className="text-primary italic">AI-Powered</span> Cloud Solutions
           </h1>
           <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed px-4">
-            I specialize in building robust, scalable applications with a focus on
-            exceptional user experience and performance-driven code.
+            Specializing in Full-Stack Engineering with a focus on RAG pipelines,
+            low-latency APIs, and seamless user experiences.
           </p>
         </div>
 

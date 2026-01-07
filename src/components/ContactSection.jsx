@@ -70,16 +70,16 @@ export const ContactSection = () => {
                   { icon: Phone, label: 'Phone', value: '+91 8138090299', href: 'tel:+918138090299' },
                   { icon: MapPin, label: 'Location', value: 'Thrissur, Kerala, India' },
                 ].map((item) => (
-                  <div key={item.label} className="flex items-center gap-4 group p-2 md:p-0">
-                    <div className="p-3 md:p-4 bg-primary/10 rounded-xl md:rounded-2xl group-hover:bg-primary group-hover:text-primary-foreground transition-all">
+                  <div key={item.label} className="flex items-start gap-4 group p-2 md:p-0">
+                    <div className="flex-shrink-0 p-3 md:p-4 bg-primary/10 rounded-xl md:rounded-2xl group-hover:bg-primary group-hover:text-primary-foreground transition-all">
                       <item.icon className="w-5 h-5 md:w-6 md:h-6" />
                     </div>
-                    <div>
+                    <div className="pt-1.5 md:pt-2">
                       <p className="text-[10px] md:text-xs font-bold text-primary uppercase tracking-widest">{item.label}</p>
                       {item.href ? (
-                        <a href={item.href} className="text-base md:text-lg font-medium hover:text-primary transition-colors">{item.value}</a>
+                        <a href={item.href} className="text-base md:text-lg font-medium hover:text-primary transition-colors block leading-tight">{item.value}</a>
                       ) : (
-                        <p className="text-base md:text-lg font-medium">{item.value}</p>
+                        <p className="text-base md:text-lg font-medium leading-tight">{item.value}</p>
                       )}
                     </div>
                   </div>

@@ -18,13 +18,16 @@ export const AboutMe = () => {
 
             <div className="space-y-4 md:space-y-6 text-base md:text-lg text-muted-foreground leading-relaxed text-center md:text-left">
               <p>
-                I am a passionate Software Engineer dedicated to architecting solutions that solve complex problems.
-                My journey in tech is driven by an insatiable curiosity and a commitment to excellence.
+                I am an <strong>Intermediate Software Engineer</strong> with a deep passion for
+                leveraging AI to create meaningful industry change. I specialize in building
+                applications that bridge the gap between complex data and intuitive user experiences,
+                always with an eye toward scale and impact.
               </p>
               <p>
-                With expertise across the full stack, I focus on creating performant, scalable, and inclusive
-                digital experiences. I believe that good software is not just about writing code, but about
-                understanding the "why" behind every feature.
+                As a lifelong learner, I am highly <strong>trainable and eager for mentorship</strong>.
+                I thrive in environments where I can learn from senior architects while contributing
+                my growing proficiency in AI-driven solutions and full-stack development. My goal
+                is to build software that doesn't just work, but makes a difference.
               </p>
             </div>
 
@@ -52,10 +55,10 @@ export const AboutMe = () => {
 
               <ul className="space-y-4">
                 {[
-                  { label: 'Role', value: 'Software Engineer' },
-                  { label: 'Experience', value: 'Junior / Full Stack' },
-                  { label: 'Focus', value: 'Frontend & Backend' },
-                  { label: 'Location', value: 'Remote / Hybrid' },
+                  { label: 'Specialization', value: 'Full-Stack / AI' },
+                  { label: 'Current Stack', value: 'React • FastAPI • Gemini' },
+                  { label: 'Focus Area', value: 'AI Solutions • RAG' },
+                  { label: 'Availability', value: 'Immediate / Remote' },
                 ].map((stat) => (
                   <li key={stat.label} className="flex justify-between border-b border-border/50 pb-2">
                     <span className="text-xs md:text-sm text-muted-foreground">{stat.label}</span>

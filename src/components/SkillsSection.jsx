@@ -3,32 +3,31 @@ import { cn } from "../lib/utils";
 import { Code2, Server, Wrench, Layers, Terminal, Database, ShieldCheck, Cpu } from "lucide-react";
 
 const skills = [
+  // AI & Architecture
+  { name: "LLM Integration (Gemini/OpenAI)", level: 80, category: "ai" },
+  { name: "RAG Architectures (Intermediate)", level: 70, category: "ai" },
+  { name: "Vector Databases (pgvector)", level: 75, category: "ai" },
+  { name: "System Design (Developing)", level: 65, category: "ai" },
+
+  // Backend & Cloud
+  { name: "FastAPI / Node.js", level: 80, category: "backend" },
+  { name: "PostgreSQL / Redis", level: 80, category: "backend" },
+  { name: "Docker / Containerization", level: 70, category: "backend" },
+  { name: "AWS / Cloud Deployment", level: 60, category: "backend" },
+  { name: "CI/CD Pipelines", level: 70, category: "backend" },
+
   // Frontend
-  { name: "React / Next.js", level: 90, category: "frontend" },
-  { name: "TypeScript", level: 85, category: "frontend" },
-  { name: "Tailwind CSS", level: 95, category: "frontend" },
-  { name: "Unit Testing (Jest)", level: 75, category: "frontend" },
-  { name: "State Management", level: 85, category: "frontend" },
-
-  // Backend
-  { name: "Node.js (Express)", level: 85, category: "backend" },
-  { name: "System Design", level: 70, category: "backend" },
-  { name: "Prisma / PostgreSQL", level: 80, category: "backend" },
-  { name: "Redis / Caching", level: 65, category: "backend" },
-  { name: "REST / GraphQL", level: 90, category: "backend" },
-
-  // DevOps & Core
-  { name: "Docker / CI-CD", level: 75, category: "tools" },
-  { name: "Git / GitHub", level: 95, category: "tools" },
-  { name: "AWS Services", level: 50, category: "tools" },
-  { name: "Data Structures", level: 85, category: "tools" },
+  { name: "React / Next.js", level: 85, category: "frontend" },
+  { name: "TypeScript", level: 75, category: "frontend" },
+  { name: "Tailwind CSS", level: 90, category: "frontend" },
+  { name: "State Management (Redux)", level: 75, category: "frontend" },
 ];
 
 const categories = [
   { id: "all", name: "All Skills", icon: Layers },
+  { id: "ai", name: "AI & Architecture", icon: Cpu },
+  { id: "backend", name: "Backend & Cloud", icon: Server },
   { id: "frontend", name: "Frontend", icon: Code2 },
-  { id: "backend", name: "Backend", icon: Server },
-  { id: "tools", name: "DevOps & Core", icon: Wrench },
 ];
 
 export const SkillsSection = () => {

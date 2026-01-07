@@ -11,8 +11,8 @@ export const useEnvironment = () => {
 };
 
 export const EnvironmentProvider = ({ children }) => {
-    const [timeMode, setTimeMode] = useState('day'); // 'day' or 'night'
-    const [season, setSeason] = useState('spring'); // 'spring', 'summer', 'monsoon', 'winter'
+    const [timeMode, setTimeMode] = useState('night'); // Default to night
+    const [season, setSeason] = useState('spring');
     const [isManual, setIsManual] = useState(false);
 
     const toggleTheme = () => {
@@ -32,17 +32,18 @@ export const EnvironmentProvider = ({ children }) => {
         const updateEnvironment = () => {
             const now = new Date();
             const hour = now.getHours();
-            const month = now.getMonth(); // 0-11
+            const month = now.getMonth();
 
-            // Only auto-update if the user hasn't manually toggled it
+            // Set initial dark class for night mode
+            if (timeMode === 'night') {
+                document.documentElement.classList.add('dark');
+            }
+
+            // Only auto-update if NOT manual AND NOT explicitly forced to night
             if (!isManual) {
-                if (hour >= 6 && hour < 18) {
-                    setTimeMode('day');
-                    document.documentElement.classList.remove('dark');
-                } else {
-                    setTimeMode('night');
-                    document.documentElement.classList.add('dark');
-                }
+                // We prioritize night mode as requested, but keep seasonal logic
+                // If the user wants "ALWAYS in night mode" unless changed,
+                // we should disable the auto-day-switch.
             }
 
             // Seasonal Logic (always auto-updates)
@@ -58,10 +59,8 @@ export const EnvironmentProvider = ({ children }) => {
         };
 
         updateEnvironment();
-        const interval = setInterval(updateEnvironment, 60000);
-
-        return () => clearInterval(interval);
-    }, [isManual]);
+        // Removed the interval that forced day mode
+    }, [isManual, timeMode]);
 
     return (
         <EnvironmentContext.Provider value={{ timeMode, season, toggleTheme }}>
