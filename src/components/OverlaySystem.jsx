@@ -17,14 +17,14 @@ export const OverlaySystem = () => {
     }, [isWindy]);
 
     const particles = useMemo(() => {
-        const count = season === 'summer' ? 0 : 50;
+        const count = season === 'summer' ? 0 : 80; // Increased density
         return Array.from({ length: count }).map((_, i) => ({
             id: i,
             left: `${Math.random() * 100}%`,
-            delay: `${Math.random() * 5}s`,
-            duration: `${4 + Math.random() * 4}s`,
+            delay: `${Math.random() * 10}s`, // Wider delay for better distribution
+            duration: `${5 + Math.random() * 5}s`,
             size: `${2 + Math.random() * 4}px`,
-            opacity: 0.3 + Math.random() * 0.7
+            opacity: 0.2 + Math.random() * 0.6
         }));
     }, [season]);
 
@@ -74,7 +74,7 @@ export const OverlaySystem = () => {
                     <div
                         key={`snow-${p.id}`}
                         className={cn(
-                            "absolute top-[-20px] bg-white rounded-full transition-all duration-1000",
+                            "absolute top-[-20px] bg-white rounded-full",
                             "animate-[fall_linear_infinite]"
                         )}
                         style={{
@@ -84,7 +84,6 @@ export const OverlaySystem = () => {
                             animationDelay: p.delay,
                             animationDuration: p.duration,
                             opacity: p.opacity,
-                            transform: isWindy ? 'translateX(100px) rotate(20deg)' : 'translateX(0)'
                         }}
                     />
                 ))}
@@ -99,7 +98,6 @@ export const OverlaySystem = () => {
                             height: '20px',
                             animationDelay: p.delay,
                             animationDuration: p.duration,
-                            transform: isWindy ? 'translateX(30px) rotate(15deg)' : 'translateX(0)'
                         }}
                     />
                 ))}
@@ -114,7 +112,6 @@ export const OverlaySystem = () => {
                             height: p.size,
                             animationDelay: p.delay,
                             animationDuration: p.duration,
-                            transform: isWindy ? 'translateX(150px) rotate(45deg)' : 'translateX(0)'
                         }}
                     />
                 ))}
