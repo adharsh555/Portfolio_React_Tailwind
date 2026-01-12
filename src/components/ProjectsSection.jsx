@@ -13,7 +13,7 @@ const projects = [
     role: "Full-Stack Dev",
     tags: ["Next.js", "Gemini AI", "Tailwind CSS", "Framer Motion"],
     githubUrl: "https://github.com/adharsh555/Ai_fitness_coach",
-    demoUrl: "https://ai-fitness-coach-adharsh.vercel.app/",
+    demoUrl: "https://ai-fitness-coach-flame.vercel.app/",
     icon: Dumbbell
   },
   {
@@ -26,7 +26,7 @@ const projects = [
     role: "Backend Engineer",
     tags: ["React", "Node.js", "PostgreSQL", "Gemini API"],
     githubUrl: "https://github.com/adharsh555/Semantic-Engine-AI-Retrieval",
-    demoUrl: "https://semantic-retrieval-ai.vercel.app/",
+    demoUrl: "https://semantic-engine-ai-retrieval.vercel.app/",
     icon: Brain
   },
   {
