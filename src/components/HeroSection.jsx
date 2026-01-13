@@ -4,7 +4,7 @@ import { useEnvironment } from '../context/EnvironmentContext';
 import { cn } from '../lib/utils';
 
 const HeroSection = () => {
-  const { timeMode, season } = useEnvironment();
+  const { timeMode } = useEnvironment();
 
   return (
     <section className="relative min-h-[100dvh] flex items-center justify-center overflow-hidden px-4 sm:px-6 py-20">
@@ -20,10 +20,7 @@ const HeroSection = () => {
         )} />
       </div>
 
-      <div className={cn(
-        "relative z-10 max-w-4xl w-full text-center space-y-6 md:space-y-8 animate-fade-in",
-        season === 'summer' && "animate-[melt_10s_ease-in-out_infinite]"
-      )}>
+      <div className="relative z-10 max-w-4xl w-full text-center space-y-6 md:space-y-8 animate-fade-in">
         <div className="space-y-4">
           <h2 className="text-primary font-semibold tracking-wider text-xs md:text-sm uppercase">
             Full-Stack Developer • AI Enthusiast
